@@ -1,6 +1,7 @@
 package net.keegancuff.endgame;
 
 import net.fabricmc.api.ModInitializer;
+import net.keegancuff.endgame.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,6 +12,6 @@ public class EndGame implements ModInitializer {
 	@Override
 
 	public void onInitialize() {
-
+		ModItems.registerModItems();
 	}
 }
