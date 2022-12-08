@@ -1,5 +1,8 @@
 {
   "item.endgame.enderium_ingot": "Enderium Ingot",
 
+  "block.endgame.enderium_ore": "Enderium Ore",
+  "block.endgame.enderium_block": "Block of Enderium",
+
   "itemGroup.endgame.endgame": "End Game"
 }

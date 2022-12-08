@@ -3,6 +3,7 @@ package net.keegancuff.endgame.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.block.ModBlocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemGroups;
@@ -15,9 +16,13 @@ public class ModItemGroup {
             .displayName(Text.literal("End Game")).icon(() -> new ItemStack(ModItems.ENDERIUM_INGOT))
             .entries(((enabledFeatures, entries, operatorEnabled) -> {
                 entries.add(ModItems.ENDERIUM_INGOT);
+                entries.add(ModBlocks.ENDERIUM_ORE);
+                entries.add(ModBlocks.ENDERIUM_BLOCK);
             })).build();
 
-    ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(ModItems.ENDERIUM_INGOT));
+    public static void registerModGroups(){
+        EndGame.LOGGER.debug("Registering ModGroups for " + EndGame.MOD_ID);
+    }
 
 
 }
