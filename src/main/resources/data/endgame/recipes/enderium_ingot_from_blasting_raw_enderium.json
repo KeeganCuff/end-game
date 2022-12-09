@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 2,
+  "group": "enderium",
+  "ingredient": {
+    "item": "endgame:raw_enderium"
+  },
+  "result": "endgame:enderium_ingot"
+}
