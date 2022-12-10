@@ -28,11 +28,18 @@ public class ModItems {
 
 
     private static Item registerItem(String name, Item item){
-        //ItemGroupEvents.modifyEntriesEvent(ModItemGroup.ENDGAME).register(entries -> entries.add(item));
         return Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, name), item);
     }
 
     public static void registerModItems() {
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(ENDERIUM_INGOT));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(RAW_ENDERIUM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_SWORD));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_AXE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_SHOVEL));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_PICKAXE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_AXE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_HOE));
         EndGame.LOGGER.debug("Registering Mod Items for " + EndGame.MOD_ID);
     }
 }
