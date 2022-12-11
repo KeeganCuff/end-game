@@ -3,6 +3,8 @@ package net.keegancuff.endgame.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.item.custom.ModArmorItem;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -25,6 +27,14 @@ public class ModItems {
             new SwordItem(ModToolMaterials.ENDERIUM, 3, -2.4F, (new Item.Settings()).rarity(Rarity.RARE)));
     public static final Item ENDERIUM_HOE = registerItem("enderium_hoe",
             new SwordItem(ModToolMaterials.ENDERIUM, -4, 0.0F, (new Item.Settings()).rarity(Rarity.RARE)));
+    public static final Item ENDERIUM_HELMET = registerItem("enderium_helmet",
+            new ModArmorItem(ModArmorMaterials.ENDERIUM, EquipmentSlot.HEAD, (new Item.Settings()).rarity(Rarity.RARE)));
+    public static final Item ENDERIUM_CHESTPLATE = registerItem("enderium_chestplate",
+            new ArmorItem(ModArmorMaterials.ENDERIUM, EquipmentSlot.CHEST, (new Item.Settings()).rarity(Rarity.RARE)));
+    public static final Item ENDERIUM_LEGGINGS = registerItem("enderium_leggings",
+            new ArmorItem(ModArmorMaterials.ENDERIUM, EquipmentSlot.LEGS, (new Item.Settings()).rarity(Rarity.RARE)));
+    public static final Item ENDERIUM_BOOTS = registerItem("enderium_boots",
+            new ArmorItem(ModArmorMaterials.ENDERIUM, EquipmentSlot.FEET, (new Item.Settings()).rarity(Rarity.RARE)));
 
 
     private static Item registerItem(String name, Item item){
@@ -40,6 +50,10 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_PICKAXE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_AXE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_HOE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_HELMET));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_CHESTPLATE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_LEGGINGS));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_BOOTS));
         EndGame.LOGGER.debug("Registering Mod Items for " + EndGame.MOD_ID);
     }
 }

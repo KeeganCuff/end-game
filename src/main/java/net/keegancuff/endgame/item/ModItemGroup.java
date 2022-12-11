@@ -24,6 +24,10 @@ public class ModItemGroup {
                 entries.add(ModItems.ENDERIUM_SHOVEL);
                 entries.add(ModItems.ENDERIUM_AXE);
                 entries.add(ModItems.ENDERIUM_HOE);
+                entries.add(ModItems.ENDERIUM_HELMET);
+                entries.add(ModItems.ENDERIUM_CHESTPLATE);
+                entries.add(ModItems.ENDERIUM_LEGGINGS);
+                entries.add(ModItems.ENDERIUM_BOOTS);
             })).build();
 
     public static void registerModGroups(){
