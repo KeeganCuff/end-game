@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.keegancuff.endgame.EndGame;
 import net.keegancuff.endgame.item.custom.ModArmorItem;
+import net.keegancuff.endgame.item.custom.ModFloatingItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -14,9 +15,9 @@ import net.minecraft.util.Rarity;
 public class ModItems {
 
     public static final Item ENDERIUM_INGOT = registerItem("enderium_ingot",
-            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+            new ModFloatingItem(new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item RAW_ENDERIUM = registerItem("raw_enderium",
-            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+            new ModFloatingItem(new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item ENDERIUM_PICKAXE = registerItem("enderium_pickaxe",
             new PickaxeItem(ModToolMaterials.ENDERIUM, 1, -2.8F, (new Item.Settings()).rarity(Rarity.RARE)));
     public static final Item ENDERIUM_AXE = registerItem("enderium_axe",

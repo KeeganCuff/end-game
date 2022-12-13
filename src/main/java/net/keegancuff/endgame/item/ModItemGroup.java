@@ -17,6 +17,7 @@ public class ModItemGroup {
             .entries(((enabledFeatures, entries, operatorEnabled) -> {
                 entries.add(ModBlocks.ENDERIUM_ORE);
                 entries.add(ModBlocks.ENDERIUM_BLOCK);
+                entries.add(ModBlocks.PHASE_SHIFTER);
                 entries.add(ModItems.ENDERIUM_INGOT);
                 entries.add(ModItems.RAW_ENDERIUM);
                 entries.add(ModItems.ENDERIUM_SWORD);

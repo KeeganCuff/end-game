@@ -19,7 +19,9 @@ public class ModArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, StatusEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, StatusEffectInstance>())
                     .put (ModArmorMaterials.ENDERIUM, new StatusEffectInstance(StatusEffects.SPEED, 100, 0)).build();
-    
+
+    private boolean savingFall;
+
     public ModArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
         super(material, slot, settings);
     }
@@ -54,8 +56,13 @@ public class ModArmorItem extends ArmorItem {
         boolean hasPlayerEffect = player.hasStatusEffect(mapStatusEffect.getEffectType());
 
         if (hasCorrectArmorOn(mapArmorMaterial, player)) {
-            if (mapArmorMaterial.equals(ModArmorMaterials.ENDERIUM) && player.fallDistance > 3.0F) {
-                player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 100, 0));
+            //This if is for the Slow Falling. 3.0F is the max height of falling before you take fall damage.
+            if (player.isOnGround()){
+                savingFall = false;
+            }
+            if (savingFall || !player.isOnGround() && mapArmorMaterial.equals(ModArmorMaterials.ENDERIUM) && player.fallDistance >= 3.0F) {
+                player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 10, 0));
+                savingFall = true;
             }
             if (!hasPlayerEffect) {
                 player.addStatusEffect(new StatusEffectInstance(mapStatusEffect.getEffectType(),

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "endgame:block/phase_shifter_bottom",
+    "east": "endgame:block/phase_shifter_side",
+    "north": "endgame:block/phase_shifter_side",
+    "particle": "endgame:block/phase_shifter_side",
+    "south": "endgame:block/phase_shifter_side",
+    "up": "endgame:block/phase_shifter_top",
+    "west": "endgame:block/phase_shifter_side"
+  }
+}

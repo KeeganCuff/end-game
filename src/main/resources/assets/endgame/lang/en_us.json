@@ -15,5 +15,7 @@
   "block.endgame.enderium_ore": "Enderium Ore",
   "block.endgame.enderium_block": "Block of Enderium",
 
+  "block.endgame.phase_shifter": "Phase Shifter",
+
   "itemGroup.endgame.endgame": "End Game"
 }

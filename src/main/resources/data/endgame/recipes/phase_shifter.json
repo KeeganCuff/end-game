@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "endgame:enderium_block"
+    },
+    "E": {
+      "item": "minecraft:end_stone"
+    },
+    "O": {
+      "item": "minecraft:ender_eye"
+    }
+  },
+  "pattern": [
+    " O ",
+    "E#E",
+    "EEE"
+  ],
+  "result": {
+    "item": "endgame:phase_shifter"
+  }
+}
