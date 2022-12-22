@@ -30,12 +30,10 @@ public class ItemEntityMixin extends EntityMixin{
 
     @Inject(at = @At("TAIL"), method = "setStack")
     private void createEntity(ItemStack stack, CallbackInfo info){
-        EndGame.LOGGER.info(stack.toString());
         Item item = stack.getItem();
         if (item instanceof ModFloatingItem || item instanceof ArmorItem && ((ArmorItem)item).getMaterial() == ModArmorMaterials.ENDERIUM ||
         item instanceof ToolItem && ((ToolItem)item).getMaterial() == ModToolMaterials.ENDERIUM || item instanceof BlockItem &&
                 (((BlockItem)item).getBlock() == ModBlocks.ENDERIUM_BLOCK || ((BlockItem)item).getBlock() == ModBlocks.ENDERIUM_ORE)){
-            EndGame.LOGGER.info("Found a floating item!");
             setNoGravity(true);
         }
     }

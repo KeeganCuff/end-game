@@ -8,6 +8,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ModDimensions {
     public static final RegistryKey<World> MIRROR_DIMENSION = RegistryKey.of(RegistryKeys.WORLD,
             new Identifier(EndGame.MOD_ID, "mirror"));

@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.keegancuff.endgame.block.ModBlocks;
 import net.keegancuff.endgame.item.ModItemGroup;
 import net.keegancuff.endgame.item.ModItems;
+import net.keegancuff.endgame.util.ModRegistries;
 import net.keegancuff.endgame.world.dimension.ModDimensions;
 import net.keegancuff.endgame.world.feature.ModConfiguredFeatures;
 import net.keegancuff.endgame.world.feature.ModPlacedFeatures;
@@ -27,5 +28,7 @@ public class EndGame implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModDimensions.register();
+
+		ModRegistries.registerModStuffs();
 	}
 }

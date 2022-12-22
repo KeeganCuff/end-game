@@ -32,11 +32,11 @@ public class PhaseShifterBlock extends Block {
 
     @Override
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {
-        System.out.println("Stepped on me! - " + (world.isClient()? "client" : "server"));
+        System.out.println("PhaseShifterBlock: Stepped on me! - " + (world.isClient()? "client" : "server"));
         if (world.isClient() || !entity.isSneaking()){
             return;
         }
-        EndGame.LOGGER.info("now we're in the " + (world.isClient()? "client" : "server"));
+        EndGame.LOGGER.info("PhaseShifterBlock: now we're in the " + (world.isClient()? "client" : "server"));
         if (world instanceof ServerWorld && world.getRegistryKey() != World.END && world.getRegistryKey() != World.NETHER && !entity.hasVehicle() && !entity.hasPassengers() && entity.canUsePortals()) {
             RegistryKey<World> registryKey = world.getRegistryKey() == ModDimensions.MIRROR_DIMENSION ? World.OVERWORLD : ModDimensions.MIRROR_DIMENSION;
             ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
