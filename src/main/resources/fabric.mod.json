@@ -18,6 +18,8 @@
 
   "environment": "*",
   "entrypoints": {
+    "fabric-datagen": [
+    ],
     "main": [
       "net.keegancuff.endgame.EndGame"
     ],

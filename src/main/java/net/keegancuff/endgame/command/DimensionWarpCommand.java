@@ -2,35 +2,28 @@ package net.keegancuff.endgame.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.keegancuff.endgame.EndGame;
-import net.keegancuff.endgame.world.dimension.ModDimensions;
 import net.keegancuff.endgame.world.dimension.tools.DimensionFactory;
 import net.keegancuff.endgame.world.dimension.tools.DynamicDimensionManager;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.entity.Entity;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionOptions;
-import org.apache.logging.log4j.core.jmx.Server;
 
-public class CreateWorldCommand {
+public class DimensionWarpCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment){
-        dispatcher.register(CommandManager.literal("dimension").requires(source -> source.hasPermissionLevel(3))
+        dispatcher.register(CommandManager.literal("dimwarp").requires(source -> source.hasPermissionLevel(3))
                 .then(CommandManager.argument("entity", EntityArgumentType.player())
-                .then(CommandManager.argument("id", IntegerArgumentType.integer()).executes((CreateWorldCommand::run)))));
+                .then(CommandManager.argument("id", IntegerArgumentType.integer()).executes((DimensionWarpCommand::run)))));
     }
 
     private static int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
@@ -42,9 +35,12 @@ public class CreateWorldCommand {
         }
         DynamicDimensionManager.sendPlayerToDimension((ServerPlayerEntity)target ,
                 DynamicDimensionManager.getOrCreateWorld(context.getSource().getServer(),
-                        RegistryKey.of(RegistryKeys.WORLD, new Identifier(EndGame.MOD_ID, id.toString())),
+                        RegistryKey.of(RegistryKeys.WORLD, new Identifier(EndGame.MOD_ID, "phase_dimension_" + id)),
                         DimensionFactory::createDimension),
                 target.getPos());
+        for(World world : context.getSource().getServer().getWorlds()) {
+            EndGame.LOGGER.info(world.toString() + ", ");
+        }
         return id;
     }
 }
