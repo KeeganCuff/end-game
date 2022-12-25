@@ -1,7 +1,7 @@
 package net.keegancuff.endgame.util;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.keegancuff.endgame.command.CreateWorldCommand;
+import net.keegancuff.endgame.command.DimensionWarpCommand;
 
 public class ModRegistries {
     public static void registerModStuffs(){
@@ -9,6 +9,6 @@ public class ModRegistries {
     }
 
     private static void registerCommands() {
-        CommandRegistrationCallback.EVENT.register(CreateWorldCommand::register);
+        CommandRegistrationCallback.EVENT.register(DimensionWarpCommand::register);
     }
 }

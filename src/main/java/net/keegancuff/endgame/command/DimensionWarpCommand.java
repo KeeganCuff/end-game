@@ -5,8 +5,10 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.world.dimension.fantasy.FantasyDimensionHelper;
 import net.keegancuff.endgame.world.dimension.tools.DimensionFactory;
 import net.keegancuff.endgame.world.dimension.tools.DynamicDimensionManager;
+import net.minecraft.client.render.DimensionEffects;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.command.argument.EntityArgumentType;
@@ -18,6 +20,8 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
+import xyz.nucleoid.fantasy.Fantasy;
+import xyz.nucleoid.fantasy.RuntimeWorldHandle;
 
 public class DimensionWarpCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandRegistryAccess, CommandManager.RegistrationEnvironment registrationEnvironment){
@@ -30,17 +34,16 @@ public class DimensionWarpCommand {
         Integer id = context.getArgument("id", Integer.class);
         Entity target = context.getArgument("entity", EntitySelector.class).getPlayer(context.getSource());
         EndGame.LOGGER.info("CreateWorldCommand: Running dimension command!");
-        if (!(target instanceof ServerPlayerEntity)){
+        if (!(target instanceof ServerPlayerEntity playerEntity)){
             return -1;
         }
-        DynamicDimensionManager.sendPlayerToDimension((ServerPlayerEntity)target ,
-                DynamicDimensionManager.getOrCreateWorld(context.getSource().getServer(),
-                        RegistryKey.of(RegistryKeys.WORLD, new Identifier(EndGame.MOD_ID, "phase_dimension_" + id)),
-                        DimensionFactory::createDimension),
-                target.getPos());
+        Fantasy fantasy = Fantasy.get(context.getSource().getServer());
+        RuntimeWorldHandle worldHandle = fantasy.getOrOpenPersistentWorld(new Identifier(EndGame.MOD_ID, "phase_dimension_" + id),
+                FantasyDimensionHelper.getPhaseConfig(context.getSource().getServer()));
         for(World world : context.getSource().getServer().getWorlds()) {
             EndGame.LOGGER.info(world.toString() + ", ");
         }
+        playerEntity.teleport(worldHandle.asWorld(), playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), playerEntity.getYaw(), playerEntity.getPitch());
         return id;
     }
 }
