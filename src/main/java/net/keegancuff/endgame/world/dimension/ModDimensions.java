@@ -1,6 +1,8 @@
 package net.keegancuff.endgame.world.dimension;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.world.dimension.fantasy.FantasyDimensionHelper;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -19,7 +21,11 @@ public class ModDimensions {
     public static final RegistryKey<DimensionType> MIRROR_TYPE_KEY = RegistryKey.of(
             RegistryKeys.DIMENSION_TYPE, MIRROR_DIMENSION.getValue());
 
+    public static final RegistryKey<DimensionType> PHASE_DIMENSION_TYPE = RegistryKey.of(
+            RegistryKeys.DIMENSION_TYPE, new Identifier(EndGame.MOD_ID, "phase_dimensions"));
+
     public static void register(){
+        ServerLifecycleEvents.SERVER_STARTED.register(FantasyDimensionHelper::refreshPersistentWorlds);
         EndGame.LOGGER.debug("Registering ModDimensions for " + EndGame.MOD_ID);
     }
 }

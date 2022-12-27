@@ -39,5 +39,10 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/server/MinecraftServer": ["net/keegancuff/endgame/server/ModServerInfo"]
+    }
   }
 }

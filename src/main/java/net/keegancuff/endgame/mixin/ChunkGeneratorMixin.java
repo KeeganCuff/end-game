@@ -29,7 +29,7 @@ public class ChunkGeneratorMixin {
     private long injectFeatureSeed(long x, StructureWorldAccess swa, Chunk chunk, StructureAccessor structureAccessor) {
         if (swa instanceof ChunkRegion chunkRegion) {
             if (chunkRegion.toServerWorld().getRegistryKey().getValue().toString().contains("phase_dimension_")) {
-                EndGame.LOGGER.info("ChunkGeneratorMixin: Feature Seed Changed!");
+                //EndGame.LOGGER.info("ChunkGeneratorMixin: we in here");
                 return x + Long.parseLong(chunkRegion.toServerWorld().getRegistryKey().getValue().toString().substring(24));
             }
         }

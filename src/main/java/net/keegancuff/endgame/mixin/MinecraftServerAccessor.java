@@ -26,6 +26,11 @@ public interface MinecraftServerAccessor {
     @Accessor
     Map<RegistryKey<World>, ServerWorld> getWorlds();
 
+    @Accessor("worlds")
+    public void setWorlds(Map<RegistryKey<World>, ServerWorld> worlds);
+
+
+
     /*@Shadow
     private WorldGenerationProgressListenerFactory worldGenerationProgressListenerFactory;
     @Shadow
