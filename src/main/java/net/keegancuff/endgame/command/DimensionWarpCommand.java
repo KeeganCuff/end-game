@@ -6,7 +6,6 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.keegancuff.endgame.EndGame;
 import net.keegancuff.endgame.mixin.MinecraftServerAccessor;
-import net.keegancuff.endgame.server.ModServerInfo;
 import net.keegancuff.endgame.server.PersistentWorldState;
 import net.keegancuff.endgame.world.dimension.fantasy.FantasyDimensionHelper;
 import net.keegancuff.endgame.world.dimension.tools.DimensionFactory;
@@ -42,11 +41,8 @@ public class DimensionWarpCommand {
             return -1;
         }
         MinecraftServer server = context.getSource().getServer();
-        Fantasy fantasy = Fantasy.get(server);
-        RuntimeWorldHandle worldHandle = fantasy.getOrOpenPersistentWorld(new Identifier(EndGame.MOD_ID, "phase_dimension_" + id),
-                FantasyDimensionHelper.getPhaseConfig(server));
-        FantasyDimensionHelper.addNewId(id, server);
-        playerEntity.teleport(worldHandle.asWorld(), playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), playerEntity.getYaw(), playerEntity.getPitch());
+        playerEntity.teleport(FantasyDimensionHelper.newWorld(server, id),
+                playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), playerEntity.getYaw(), playerEntity.getPitch());
         return id;
     }
 }

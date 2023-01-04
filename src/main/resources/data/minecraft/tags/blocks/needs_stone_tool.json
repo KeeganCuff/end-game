@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    
+    "endgame:variant_metal_ore",
+    "endgame:variant_metal_block"
   ]
 }

@@ -8,8 +8,9 @@
     "EntityMixin",
     "ItemEntityMixin",
     "MinecraftServerAccessor",
-    "MinecraftServerMixin",
-    "NoiseChunkGeneratorMixin"
+    "NoiseChunkGeneratorMixin",
+    "TargetMixin",
+    "OreFeatureMixin"
   ],
   "client": [
   ],

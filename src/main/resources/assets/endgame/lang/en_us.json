@@ -12,8 +12,14 @@
   "item.endgame.enderium_leggings": "Enderium Leggings",
   "item.endgame.enderium_boots": "Enderium Boots",
 
+  "item.endgame.variant_metal_ingot": "Variant Metal Ingot",
+  "item.endgame.raw_variant_metal": "Raw Variant Metal",
+
   "block.endgame.enderium_ore": "Enderium Ore",
   "block.endgame.enderium_block": "Block of Enderium",
+
+  "block.endgame.variant_metal_ore": "Variant Metal Ore",
+  "block.endgame.variant_metal_block": "Variant Metal Block",
 
   "block.endgame.phase_shifter": "Phase Shifter",
 

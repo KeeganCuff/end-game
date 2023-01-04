@@ -1,0 +1,11 @@
+{
+  "values": [
+    "endgame:desert",
+    "endgame:warm_ocean",
+    "#minecraft:is_jungle",
+    "#minecraft:is_savanna",
+    "#minecraft:is_nether",
+    "#minecraft:is_badlands",
+    "endgame:mangrove_swamp"
+  ]
+}

@@ -1,7 +1,6 @@
 package net.keegancuff.endgame.block.custom;
 
 import net.keegancuff.endgame.EndGame;
-import net.keegancuff.endgame.mixin.EntityMixin;
 import net.keegancuff.endgame.world.dimension.ModDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

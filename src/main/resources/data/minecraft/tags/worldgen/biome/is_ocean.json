@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#minecraft:is_deep_ocean",
+    "endgame:frozen_ocean",
+    "endgame:ocean",
+    "endgame:cold_ocean",
+    "endgame:lukewarm_ocean",
+    "endgame:warm_ocean"
+  ]
+}

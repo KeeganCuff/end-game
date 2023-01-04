@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.keegancuff.endgame.EndGame;
 import net.keegancuff.endgame.item.custom.ModArmorItem;
 import net.keegancuff.endgame.item.custom.ModFloatingItem;
+import net.keegancuff.endgame.item.custom.VariantMetalItem;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -38,6 +39,12 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.ENDERIUM, EquipmentSlot.FEET, (new Item.Settings()).rarity(Rarity.RARE)));
 
 
+    public static final Item VARIANT_METAL_INGOT = registerItem("variant_metal_ingot",
+            new VariantMetalItem(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item RAW_VARIANT_METAL = registerItem("raw_variant_metal",
+            new VariantMetalItem(new FabricItemSettings().rarity(Rarity.RARE)));
+
+
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, name), item);
     }
@@ -45,6 +52,8 @@ public class ModItems {
     public static void registerModItems() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(ENDERIUM_INGOT));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(RAW_ENDERIUM));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(VARIANT_METAL_INGOT));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(RAW_VARIANT_METAL));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_SWORD));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> entries.add(ENDERIUM_AXE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_SHOVEL));

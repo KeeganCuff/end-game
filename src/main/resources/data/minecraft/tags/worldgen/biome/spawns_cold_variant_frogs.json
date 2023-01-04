@@ -1,0 +1,17 @@
+{
+  "values": [
+    "endgame:snowy_plains",
+    "endgame:ice_spikes",
+    "endgame:frozen_peaks",
+    "endgame:jagged_peaks",
+    "endgame:snowy_slopes",
+    "endgame:frozen_ocean",
+    "endgame:deep_frozen_ocean",
+    "endgame:grove",
+    "endgame:deep_dark",
+    "endgame:frozen_river",
+    "endgame:snowy_taiga",
+    "endgame:snowy_beach",
+    "#minecraft:is_end"
+  ]
+}

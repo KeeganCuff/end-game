@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "endgame:enderium_ore",
-    "endgame:enderium_block"
+    "endgame:enderium_block",
+    "endgame:variant_metal_ore",
+    "endgame:variant_metal_block"
   ]
 }

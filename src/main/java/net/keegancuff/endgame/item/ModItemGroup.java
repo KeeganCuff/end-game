@@ -1,12 +1,9 @@
 package net.keegancuff.endgame.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.keegancuff.endgame.EndGame;
 import net.keegancuff.endgame.block.ModBlocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemGroups;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -29,6 +26,9 @@ public class ModItemGroup {
                 entries.add(ModItems.ENDERIUM_CHESTPLATE);
                 entries.add(ModItems.ENDERIUM_LEGGINGS);
                 entries.add(ModItems.ENDERIUM_BOOTS);
+                entries.add(ModBlocks.VARIANT_METAL_ORE);
+                entries.add(ModItems.VARIANT_METAL_INGOT);
+                entries.add(ModItems.RAW_VARIANT_METAL);
             })).build();
 
     public static void registerModGroups(){

@@ -13,11 +13,14 @@ import java.util.List;
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?,?>> ORE_ENDERIUM = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE,
             new Identifier(EndGame.MOD_ID, "ore_enderium"));
+    public static final RegistryKey<ConfiguredFeature<?,?>> ORE_VARIANT_METAL = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE,
+            new Identifier(EndGame.MOD_ID, "ore_variant_metal"));
 
 
 
 
     public static void registerConfiguredFeatures() {
+
         EndGame.LOGGER.debug("Registering the ModConfiguredFeatures for " + EndGame.MOD_ID);
     }
 }

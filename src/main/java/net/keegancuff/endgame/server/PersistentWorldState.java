@@ -18,7 +18,7 @@ public class PersistentWorldState extends PersistentState {
 
     public static final String PHASE_WORLDS_NBT_ID = "endgame.phaseWorlds";
 
-    public int[] phaseWorlds;
+    public int[] phaseWorlds = {-1};
 
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {

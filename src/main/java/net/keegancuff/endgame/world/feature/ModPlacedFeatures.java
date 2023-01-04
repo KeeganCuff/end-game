@@ -13,7 +13,10 @@ import net.minecraft.world.gen.placementmodifier.*;
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final RegistryKey<PlacedFeature> ORE_ENDERIUM_PLACED = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(EndGame.MOD_ID, "ore_enderium"));
+    public static final RegistryKey<PlacedFeature> ORE_ENDERIUM_PLACED = RegistryKey.of(RegistryKeys.PLACED_FEATURE,
+            new Identifier(EndGame.MOD_ID, "ore_enderium"));
+    public static final RegistryKey<PlacedFeature> ORE_VARIANT_METAL_PLACED = RegistryKey.of(RegistryKeys.PLACED_FEATURE,
+            new Identifier(EndGame.MOD_ID, "ore_variant_metal"));
 
     public static void registerPlacedFeatures() {
         EndGame.LOGGER.debug("Registering the ModPlacedFeatures for " + EndGame.MOD_ID);
