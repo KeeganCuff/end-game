@@ -25,9 +25,11 @@ public class ModColorProvider {
                 ModItems.VARIANT_METAL_INGOT,
                 ModItems.RAW_VARIANT_METAL,
                 ModBlocks.VARIANT_METAL_ORE,
+                ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
                 ModBlocks.VARIANT_METAL_BLOCK);
         ColorProviderRegistry.BLOCK.register(ModColorProvider::getVariantBlockColorProvider,
                 ModBlocks.VARIANT_METAL_ORE,
+                ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
                 ModBlocks.VARIANT_METAL_BLOCK);
     }
 

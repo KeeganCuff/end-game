@@ -68,7 +68,7 @@ public class OreFeatureMixin {
             if (serverWorld.getRegistryKey().getValue().toString().contains("phase_dimension_")){
                 List<OreFeatureConfig.Target> list = new ArrayList<>();
                 for(OreFeatureConfig.Target target : config.targets){
-                    list.add(OreFeatureConfig.createTarget(target.target, VariantMaterialHelper.getMetalData(serverWorld)));
+                    list.add(OreFeatureConfig.createTarget(target.target, VariantMaterialHelper.getMetalData(serverWorld, target.state.getBlock())));
                 }
                 args.set(0, world);
                 args.set(1, args.get(1));

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "endgame:block/creative_artificer_station_bottom",
+    "east": "endgame:block/creative_artificer_station_side",
+    "north": "endgame:block/creative_artificer_station_front",
+    "particle": "endgame:block/creative_artificer_station_top",
+    "south": "endgame:block/creative_artificer_station_front",
+    "up": "endgame:block/creative_artificer_station_top",
+    "west": "endgame:block/creative_artificer_station_side"
+  }
+}

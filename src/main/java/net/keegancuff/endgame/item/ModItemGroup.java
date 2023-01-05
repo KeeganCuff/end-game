@@ -28,6 +28,7 @@ public class ModItemGroup {
                 entries.add(ModItems.ENDERIUM_LEGGINGS);
                 entries.add(ModItems.ENDERIUM_BOOTS);
                 entries.add(ModBlocks.VARIANT_METAL_ORE);
+                entries.add(ModBlocks.DEEPSLATE_VARIANT_METAL_ORE);
                 entries.add(ModItems.VARIANT_METAL_INGOT);
                 entries.add(ModItems.RAW_VARIANT_METAL);
             })).build();

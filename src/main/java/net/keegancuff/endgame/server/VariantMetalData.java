@@ -14,7 +14,6 @@ public class VariantMetalData extends PersistentState {
 
     public int color = 0;
 
-
     @Override
     public NbtCompound writeNbt(NbtCompound nbt) {
         nbt.putInt(ModColorProvider.MOD_COLOR_NBT_ID, color);
@@ -41,13 +40,13 @@ public class VariantMetalData extends PersistentState {
     }
 
     public static void createRandomData(ServerWorld world) {
-        EndGame.LOGGER.info("VariantMetalData: Generating material data for id" + FantasyDimensionHelper.toId(world));
+        EndGame.LOGGER.info("VariantMetalData: Generating material data for id: " + FantasyDimensionHelper.toId(world));
         VariantMetalData data = getWorldMetalData(world);
         data.color = colorRandom(world.getRandom());
     }
 
     private static int colorRandom(Random random) {
-        int color = random.nextInt(0xff);
+        int color = random.nextInt(ModColorProvider.NUM_VARIANT_COLORS);
         EndGame.LOGGER.info("VariantMetalData: Color: " + color);
         return color;
     }

@@ -19,9 +19,11 @@
   "block.endgame.enderium_block": "Block of Enderium",
 
   "block.endgame.variant_metal_ore": "Variant Metal Ore",
+  "block.endgame.deepslate_variant_metal_ore": "Deepslate Variant Metal Ore",
   "block.endgame.variant_metal_block": "Variant Metal Block",
 
   "block.endgame.phase_shifter": "Phase Shifter",
+  "block.endgame.creative_artificer_station": "Artificer's Station (Creative)",
 
   "itemGroup.endgame.endgame": "End Game",
 

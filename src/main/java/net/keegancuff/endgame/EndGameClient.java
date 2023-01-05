@@ -12,6 +12,7 @@ public class EndGameClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.VARIANT_METAL_ORE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DEEPSLATE_VARIANT_METAL_ORE, RenderLayer.getCutout());
         HandledScreens.register(ModScreenHandlers.ARTIFICER_STATION_SCREEN_HANDLER, ArtificerStationScreen::new);
     }
 }

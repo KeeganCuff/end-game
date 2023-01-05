@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.block.custom.CreativeArtificerStationBlock;
 import net.keegancuff.endgame.block.custom.PhaseShifterBlock;
 import net.keegancuff.endgame.block.custom.VariantMetalBlock;
 import net.keegancuff.endgame.item.custom.PhaseShifterBlockItem;
@@ -29,22 +30,29 @@ public class ModBlocks {
 
     public static final Block VARIANT_METAL_ORE = registerBlock("variant_metal_ore",
             new VariantMetalBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()));
+    public static final Block DEEPSLATE_VARIANT_METAL_ORE = registerBlock("deepslate_variant_metal_ore",
+            new VariantMetalBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()));
     public static final Block VARIANT_METAL_BLOCK= registerBlock("variant_metal_block",
             new VariantMetalBlock(FabricBlockSettings.of(Material.METAL).strength(4f).requiresTool()));
 
     public static final Block PHASE_SHIFTER = registerBlock("phase_shifter",
             new PhaseShifterBlock(FabricBlockSettings.of(Material.METAL).strength(8f).requiresTool()));
+    public static final Block CREATIVE_ARTIFICER_STATION = registerBlock("creative_artificer_station",
+            new CreativeArtificerStationBlock(FabricBlockSettings.of(Material.WOOD).strength(2f)));
 
     //Registering Block Items
     //This is the same for items with no special properties.
     public static final Item ENDERIUM_ORE_ITEM = registerBlockItem("enderium_ore", ENDERIUM_ORE);
     public static final Item ENDERIUM_BLOCK_ITEM = registerBlockItem("enderium_block", ENDERIUM_BLOCK);
     public static final Item VARIANT_METAL_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "variant_metal_ore"),
-            new VariantMetalBlockItem(VARIANT_METAL_ORE, new FabricItemSettings().rarity(Rarity.RARE)));
+            new VariantMetalBlockItem(VARIANT_METAL_ORE, new FabricItemSettings()));
+    public static final Item DEEPSLATE_VARIANT_METAL_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "deepslate_variant_metal_ore"),
+            new VariantMetalBlockItem(DEEPSLATE_VARIANT_METAL_ORE, new FabricItemSettings()));
     public static final Item VARIANT_METAL_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "variant_metal_block"),
-            new VariantMetalBlockItem(VARIANT_METAL_BLOCK, new FabricItemSettings().rarity(Rarity.RARE)));
+            new VariantMetalBlockItem(VARIANT_METAL_BLOCK, new FabricItemSettings()));
     public static final Item PHASE_SHIFTER_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "phase_shifter"),
-            new PhaseShifterBlockItem(PHASE_SHIFTER, new FabricItemSettings().rarity(Rarity.RARE)));
+            new PhaseShifterBlockItem(PHASE_SHIFTER, new FabricItemSettings()));
+    public static final Item CREATIVE_ARTIFICER_STATION_ITEM = registerBlockItem("creative_artificer_station", CREATIVE_ARTIFICER_STATION);
 
 
     private static Block registerBlock(String name, Block block){
@@ -52,15 +60,17 @@ public class ModBlocks {
     }
 
     private static Item registerBlockItem(String name, Block block){
-        return Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, name), new BlockItem(block, new FabricItemSettings().rarity(Rarity.RARE)));
+        return Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, name), new BlockItem(block, new FabricItemSettings()));
     }
 
     public static void registerModBlocks() {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(ENDERIUM_ORE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(VARIANT_METAL_ORE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(DEEPSLATE_VARIANT_METAL_ORE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.add(PHASE_SHIFTER));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.add(CREATIVE_ARTIFICER_STATION));
         EndGame.LOGGER.debug("Registering ModBlocks for " + EndGame.MOD_ID);
     }
 }
