@@ -12,9 +12,10 @@ public class ModItemGroup {
     public static final ItemGroup ENDGAME = FabricItemGroup.builder(new Identifier(EndGame.MOD_ID, "endgame"))
             .displayName(Text.literal("End Game")).icon(() -> new ItemStack(ModItems.ENDERIUM_INGOT))
             .entries(((enabledFeatures, entries, operatorEnabled) -> {
+                entries.add(ModBlocks.PHASE_SHIFTER);
+                entries.add(ModBlocks.CREATIVE_ARTIFICER_STATION);
                 entries.add(ModBlocks.ENDERIUM_ORE);
                 entries.add(ModBlocks.ENDERIUM_BLOCK);
-                entries.add(ModBlocks.PHASE_SHIFTER);
                 entries.add(ModItems.ENDERIUM_INGOT);
                 entries.add(ModItems.RAW_ENDERIUM);
                 entries.add(ModItems.ENDERIUM_SWORD);

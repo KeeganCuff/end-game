@@ -20,7 +20,7 @@ public class ModColorProvider {
     };
 
 
-    public static void registerItemColorProviders(){
+    public static void registerColorProviders(){
         ColorProviderRegistry.ITEM.register(ModColorProvider::getVariantItemColorProvider,
                 ModItems.VARIANT_METAL_INGOT,
                 ModItems.RAW_VARIANT_METAL,

@@ -2,9 +2,11 @@ package net.keegancuff.endgame;
 
 import net.fabricmc.api.ModInitializer;
 import net.keegancuff.endgame.block.ModBlocks;
+import net.keegancuff.endgame.block.entity.ModBlockEntities;
 import net.keegancuff.endgame.item.ModColorProvider;
 import net.keegancuff.endgame.item.ModItemGroup;
 import net.keegancuff.endgame.item.ModItems;
+import net.keegancuff.endgame.screen.ModScreenHandlers;
 import net.keegancuff.endgame.util.ModRegistries;
 import net.keegancuff.endgame.world.dimension.ModDimensions;
 import net.keegancuff.endgame.world.feature.ModConfiguredFeatures;
@@ -27,7 +29,11 @@ public class EndGame implements ModInitializer {
 		ModItemGroup.registerModGroups();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
-		ModColorProvider.registerItemColorProviders();
+
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
+
+		ModColorProvider.registerColorProviders();
 
 		ModDimensions.register();
 
