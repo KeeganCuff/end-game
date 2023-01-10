@@ -16,6 +16,7 @@ public class ArtificerStationScreen extends HandledScreen<ArtificerStationScreen
 
     public ArtificerStationScreen(ArtificerStationScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        playerInventoryTitleY += 4;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package net.keegancuff.endgame.screen;
 
+import net.keegancuff.endgame.block.custom.VariantMetalBlock;
+import net.keegancuff.endgame.item.custom.VariantMetalBlockItem;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -28,8 +30,8 @@ public class ArtificerStationScreenHandler extends ScreenHandler {
         inventory.onOpen(playerInventory.player);
 
         this.addSlot(new Slot(inventory, 0, 12, 15));
-        this.addSlot(new Slot(inventory, 1, 86, 15));
-        this.addSlot(new Slot(inventory, 2, 86, 60));
+        this.addSlot(new Slot(inventory, 1, 12, 59));
+        this.addSlot(new Slot(inventory, 2, 152, 37));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -80,5 +82,22 @@ public class ArtificerStationScreenHandler extends ScreenHandler {
         for (int i = 0; i < 9; i++){
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
+    }
+
+    @Override
+    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
+        if (slot == this.slots.get(0) && stack.getItem() instanceof VariantMetalBlockItem){
+            return true;
+        } else if (slot == this.slots.get(1) && true){ // to be replaced
+            return true;
+        } else if (slot == this.slots.get(2)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onContentChanged(Inventory inventory) {
+        super.onContentChanged(inventory);
     }
 }
