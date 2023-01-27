@@ -1,23 +1,35 @@
 package net.keegancuff.endgame.screen;
 
-import net.keegancuff.endgame.block.custom.VariantMetalBlock;
+import net.keegancuff.endgame.EndGame;
+import net.keegancuff.endgame.block.entity.CreativeArtificerStationBlockEntity;
+import net.keegancuff.endgame.item.ModItems;
 import net.keegancuff.endgame.item.custom.VariantMetalBlockItem;
+import net.keegancuff.endgame.item.custom.VariantMetalItem;
+import net.keegancuff.endgame.world.dimension.fantasy.VariantMaterialHelper;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.AbstractMap;
+import net.minecraft.screen.slot.SlotActionType;
 
 public class ArtificerStationScreenHandler extends ScreenHandler {
 
-    private final Inventory inventory;
+    public final Inventory inventory = new SimpleInventory(3) {
+        @Override
+        public void markDirty() {
+            super.markDirty();
+            ArtificerStationScreenHandler.this.onContentChanged(this);
+        }
+    };
+    private final Inventory blockInventory;
+
+    private String info;
+    private boolean displayingInfo;
 
     public ArtificerStationScreenHandler(int syncId, PlayerInventory inventory){
         this(syncId, inventory, new SimpleInventory(3));
@@ -26,19 +38,37 @@ public class ArtificerStationScreenHandler extends ScreenHandler {
     public ArtificerStationScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
         super(ModScreenHandlers.ARTIFICER_STATION_SCREEN_HANDLER, syncId);
         checkSize(inventory, 3);
-        this.inventory = inventory;
-        inventory.onOpen(playerInventory.player);
+        blockInventory = inventory;
+        inventoryCopy(this.inventory, inventory);
+        this.inventory.onOpen(playerInventory.player);
+        displayingInfo = false;
+        this.inventory.markDirty();
 
-        this.addSlot(new Slot(inventory, 0, 12, 15));
-        this.addSlot(new Slot(inventory, 1, 12, 59));
-        this.addSlot(new Slot(inventory, 2, 152, 37));
+        this.addSlot(new Slot(this.inventory, 0, 12, 15){
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return stack.getItem() instanceof VariantMetalItem || stack.getItem() instanceof VariantMetalBlockItem;
+            }
+        });
+        this.addSlot(new Slot(this.inventory, 1, 12, 59));
+        this.addSlot(new Slot(this.inventory, 2, 152, 37){
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false;
+            }
+        });
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
-
     }
 
-
+    private void inventoryCopy(Inventory to, Inventory from) {
+        EndGame.LOGGER.info("Copying inventory: " + from.getClass().toString() + " to " + to.getClass().toString());
+        for (int i = 0; i<to.size(); i++){
+            to.setStack(i, from.getStack(i));
+            EndGame.LOGGER.info("Stack " + i + ": " + to.getStack(i));
+        }
+    }
 
     @Override
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
@@ -70,6 +100,13 @@ public class ArtificerStationScreenHandler extends ScreenHandler {
         return this.inventory.canPlayerUse(player);
     }
 
+    @Override
+    public void close(PlayerEntity player) {
+        inventoryCopy(blockInventory, inventory);
+        blockInventory.markDirty();
+        super.close(player);
+    }
+
     private void addPlayerInventory(PlayerInventory playerInventory){
         for (int i = 0; i< 3; i++){
             for (int l = 0; l < 9; l++){
@@ -84,20 +121,57 @@ public class ArtificerStationScreenHandler extends ScreenHandler {
         }
     }
 
+    public boolean hasVariantMaterial(){
+        Item item = inventory.getStack(0).getItem();
+        return item instanceof VariantMetalItem || item instanceof VariantMetalBlockItem;
+    }
+
     @Override
-    public boolean canInsertIntoSlot(ItemStack stack, Slot slot) {
-        if (slot == this.slots.get(0) && stack.getItem() instanceof VariantMetalBlockItem){
-            return true;
-        } else if (slot == this.slots.get(1) && true){ // to be replaced
-            return true;
-        } else if (slot == this.slots.get(2)){
-            return false;
-        }
+    public boolean onButtonClick(PlayerEntity player, int id) {
+        if (id != 356)
+            return super.onButtonClick(player, id);
+        ItemStack variant = getStacks().get(0);
+        String variantInfo = info;
+        blockInventory.setStack(0, ItemStack.EMPTY);
+        blockInventory.setStack(2, VariantMaterialHelper.textToNbt(variant, variantInfo));
+        inventoryCopy(inventory, blockInventory);
         return true;
     }
 
     @Override
     public void onContentChanged(Inventory inventory) {
+        EndGame.LOGGER.info("Content Changed!");
+        if (inventory == this.inventory){
+            showInfo(inventory);
+        }
+        //inventoryCopy(blockInventory, inventory);
         super.onContentChanged(inventory);
+    }
+
+    private void showInfo(Inventory inventory) {
+        if (hasVariantMaterial() && !showingInfo()){
+            ItemStack variant = inventory.getStack(0);
+            info = (VariantMaterialHelper.getArtificerText(variant));
+            displayingInfo = true;
+        } else if (!hasVariantMaterial()){
+            info = "";
+            displayingInfo = false;
+        }
+    }
+
+
+    public String getInfo() {
+        if (info == null){
+            info = "";
+        }
+        return info;
+    }
+
+    public void setInfo(String info){
+        this.info = info;
+    }
+
+    public boolean showingInfo(){
+        return displayingInfo;
     }
 }

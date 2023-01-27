@@ -21,8 +21,6 @@ public class CreativeArtificerStationBlockEntity extends BlockEntity implements 
 
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
-
-
     public CreativeArtificerStationBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CREATIVE_ARTIFICER_STATION, pos, state);
     }
@@ -55,6 +53,11 @@ public class CreativeArtificerStationBlockEntity extends BlockEntity implements 
         super.readNbt(nbt);
     }
 
+
+    @Override
+    public void markDirty() {
+        super.markDirty();
+    }
 
     //used if there is furnace-like crafting. currently unused
     public static void tick(World world, BlockPos blockPos, BlockState blockState, CreativeArtificerStationBlockEntity blockEntity) {
