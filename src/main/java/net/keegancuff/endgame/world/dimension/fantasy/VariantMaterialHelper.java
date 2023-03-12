@@ -49,7 +49,10 @@ public class VariantMaterialHelper {
     public static ItemStack textToNbt(ItemStack stack, String text){
         if (!(stack.getItem() instanceof VariantMetalItem || stack.getItem() instanceof VariantMetalBlockItem))
             return stack.copy();
-        stack.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, Integer.parseInt(text.substring(COLOR_HEADER.length(), text.contains("\n") ? text.indexOf('\n') : text.length())));
-        return stack.copy();
+        ItemStack stack2 = stack.copy();
+        try {
+            stack2.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, Integer.parseInt(text.substring(COLOR_HEADER.length(), text.contains("\n") ? text.indexOf('\n') : text.length())));
+        } catch (Exception ignored){}
+        return stack2;
     }
 }

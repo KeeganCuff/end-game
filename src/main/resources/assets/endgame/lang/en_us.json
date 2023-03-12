@@ -15,12 +15,17 @@
   "item.endgame.variant_metal_ingot": "Variant Metal Ingot",
   "item.endgame.raw_variant_metal": "Raw Variant Metal",
 
+  "item.endgame.variant_gem": "Variant Gem",
+
   "block.endgame.enderium_ore": "Enderium Ore",
   "block.endgame.enderium_block": "Block of Enderium",
 
   "block.endgame.variant_metal_ore": "Variant Metal Ore",
   "block.endgame.deepslate_variant_metal_ore": "Deepslate Variant Metal Ore",
   "block.endgame.variant_metal_block": "Variant Metal Block",
+
+  "block.endgame.variant_gem_ore": "Variant Gem Ore",
+  "block.endgame.deepslate_variant_gem_ore": "Deepslate Variant Gem Ore",
 
   "block.endgame.phase_shifter": "Phase Shifter",
   "block.endgame.creative_artificer_station": "Artificer's Station (Creative)",

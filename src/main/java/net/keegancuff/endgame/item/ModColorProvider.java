@@ -2,6 +2,7 @@ package net.keegancuff.endgame.item;
 
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.keegancuff.endgame.block.ModBlocks;
+import net.keegancuff.endgame.block.custom.VariantGemBlock;
 import net.keegancuff.endgame.block.custom.VariantMetalBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -24,17 +25,26 @@ public class ModColorProvider {
         ColorProviderRegistry.ITEM.register(ModColorProvider::getVariantItemColorProvider,
                 ModItems.VARIANT_METAL_INGOT,
                 ModItems.RAW_VARIANT_METAL,
+                ModItems.VARIANT_GEM,
                 ModBlocks.VARIANT_METAL_ORE,
                 ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
-                ModBlocks.VARIANT_METAL_BLOCK);
+                ModBlocks.VARIANT_METAL_BLOCK,
+                ModBlocks.VARIANT_GEM_ORE,
+                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
         ColorProviderRegistry.BLOCK.register(ModColorProvider::getVariantBlockColorProvider,
                 ModBlocks.VARIANT_METAL_ORE,
                 ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
-                ModBlocks.VARIANT_METAL_BLOCK);
+                ModBlocks.VARIANT_METAL_BLOCK,
+                ModBlocks.VARIANT_GEM_ORE,
+                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
     }
 
     private static int getVariantBlockColorProvider(BlockState state, BlockRenderView view, BlockPos pos, int tintIndex) {
-        return COLORS[state.get(VariantMetalBlock.COLOR)];
+        if (state.getBlock() instanceof VariantMetalBlock)
+            return COLORS[state.get(VariantMetalBlock.COLOR)];
+        if (state.getBlock() instanceof VariantGemBlock)
+            return COLORS[state.get(VariantGemBlock.COLOR)];
+        return 0;
     }
 
     private static int getVariantItemColorProvider(ItemStack stack, int tintIndex) {

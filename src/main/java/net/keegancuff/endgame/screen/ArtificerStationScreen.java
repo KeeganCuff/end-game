@@ -19,6 +19,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TextColor;
 import net.minecraft.util.Identifier;
 
+import java.util.Objects;
+
 public class ArtificerStationScreen extends HandledScreen<ArtificerStationScreenHandler> {
 
     private static final Identifier TEXTURE = new Identifier(EndGame.MOD_ID, "textures/gui/artificer_station_gui.png");
@@ -39,33 +41,36 @@ public class ArtificerStationScreen extends HandledScreen<ArtificerStationScreen
         textBox = this.addSelectableChild(textBox);
         textBox.setChangeListener(info -> {
             handler.setInfo(info);
+            handler.onContentChanged(handler.inventory);
         });
-        button = this.addDrawable(new PressableTextWidget(x + 152, y + 59, 18, 18, Text.of("X"), button -> handler.onButtonClick(client.player, 356), this.textRenderer));
+        //button = this.addDrawable(new PressableTextWidget(x + 152, y + 59, 18, 18, Text.of("X"), button -> tryVariantChange(), this.textRenderer));
         textBox.setText(handler.getInfo());
+    }
+
+
+
+    private void tryVariantChange() {
+        String info = handler.getInfo();
+        if (!handler.hasVariantMaterial() || Objects.equals(info, "") || info == null){ // OR String is invalid
+            return;
+        }
+        try {
+            ItemStack variant = handler.inventory.getStack(0);
+            handler.slots.get(0).setStack(ItemStack.EMPTY);
+            handler.slots.get(0).markDirty();
+            handler.slots.get(2).setStack(VariantMaterialHelper.textToNbt(variant, info));
+            handler.slots.get(2).markDirty();
+        } catch (Exception ignored){
+
+        }
+
     }
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         textBox.mouseClicked(mouseX, mouseY, button);
-        this.button.mouseClicked(mouseX, mouseY, button);
+        //this.button.mouseClicked(mouseX, mouseY, button);
         return super.mouseClicked(mouseX, mouseY, button);
-    }
-
-//    @Override
-//    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-//        if (textBox.isFocused()){
-//            boolean ret = textBox.keyPressed(keyCode, scanCode, modifiers);
-//            String info = textBox.getText();
-//            EndGame.LOGGER.info(info);
-//            handler.setInfo(info);
-//            return ret;
-//        }
-//        return super.keyPressed(keyCode, scanCode, modifiers);
-//    }
-
-    @Override
-    public void close() {
-        super.close();
     }
 
     @Override

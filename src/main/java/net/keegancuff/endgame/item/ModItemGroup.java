@@ -31,6 +31,9 @@ public class ModItemGroup {
                 entries.add(ModBlocks.DEEPSLATE_VARIANT_METAL_ORE);
                 entries.add(ModItems.VARIANT_METAL_INGOT);
                 entries.add(ModItems.RAW_VARIANT_METAL);
+                entries.add(ModBlocks.VARIANT_GEM_ORE);
+                entries.add(ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
+                entries.add(ModItems.VARIANT_GEM);
             })).build();
 
     public static void registerModGroups(){

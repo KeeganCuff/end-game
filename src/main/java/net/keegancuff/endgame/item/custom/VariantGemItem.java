@@ -1,7 +1,7 @@
 package net.keegancuff.endgame.item.custom;
 
 import net.keegancuff.endgame.item.ModColorProvider;
-import net.keegancuff.endgame.screen.ModScreenHandlers;
+import net.keegancuff.endgame.screen.VariantGemScreen;
 import net.keegancuff.endgame.screen.VariantMetalScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
@@ -17,9 +17,9 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class VariantMetalItem extends Item {
+public class VariantGemItem extends Item {
 
-    public VariantMetalItem(Settings settings) {
+    public VariantGemItem(Settings settings) {
         super(settings);
     }
 
@@ -27,7 +27,7 @@ public class VariantMetalItem extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (!user.isSneaking() && user.isCreative() && world.isClient()){
-            MinecraftClient.getInstance().setScreen(new VariantMetalScreen(user.getStackInHand(hand)));
+            MinecraftClient.getInstance().setScreen(new VariantGemScreen(user.getStackInHand(hand)));
         }
         return super.use(world, user, hand);
     }
