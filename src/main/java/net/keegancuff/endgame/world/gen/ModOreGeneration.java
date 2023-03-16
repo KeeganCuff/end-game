@@ -18,6 +18,8 @@ public class ModOreGeneration {
             .add(ModificationPhase.ADDITIONS, BiomeSelectors.tag(BiomeTags.END_CITY_HAS_STRUCTURE), myOreModifier(ModPlacedFeatures.ORE_ENDERIUM_PLACED));
     public static final BiomeModification VARIANT_METAL_ORE = BiomeModifications.create(new Identifier(EndGame.MOD_ID, "features"))
             .add(ModificationPhase.ADDITIONS, BiomeSelectors.tag(ModBiomeTags.VARIANT_BIOME), myOreModifier(ModPlacedFeatures.ORE_VARIANT_METAL_PLACED));
+    public static final BiomeModification VARIANT_GEM_ORE = BiomeModifications.create(new Identifier(EndGame.MOD_ID, "features"))
+            .add(ModificationPhase.ADDITIONS, BiomeSelectors.tag(ModBiomeTags.VARIANT_BIOME), myOreModifier(ModPlacedFeatures.ORE_VARIANT_GEM_PLACED));
 
     private static BiConsumer<BiomeSelectionContext, BiomeModificationContext> myOreModifier(RegistryKey<PlacedFeature> key) {
         return (biomeSelectionContext, biomeModificationContext) ->

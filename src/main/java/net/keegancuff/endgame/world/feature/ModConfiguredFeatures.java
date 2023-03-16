@@ -15,6 +15,8 @@ public class ModConfiguredFeatures {
             new Identifier(EndGame.MOD_ID, "ore_enderium"));
     public static final RegistryKey<ConfiguredFeature<?,?>> ORE_VARIANT_METAL = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE,
             new Identifier(EndGame.MOD_ID, "ore_variant_metal"));
+    public static final RegistryKey<ConfiguredFeature<?,?>> ORE_VARIANT_GEM = RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE,
+            new Identifier(EndGame.MOD_ID, "ore_variant_gem"));
 
 
 

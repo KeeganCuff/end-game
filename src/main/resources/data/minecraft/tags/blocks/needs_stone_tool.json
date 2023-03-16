@@ -3,6 +3,7 @@
   "values": [
     "endgame:variant_metal_ore",
     "endgame:deepslate_variant_metal_ore",
+    "endgame:raw_variant_metal_block",
     "endgame:variant_metal_block"
   ]
 }

@@ -10,9 +10,9 @@ import net.minecraft.world.PersistentState;
 import net.minecraft.world.PersistentStateManager;
 import xyz.nucleoid.fantasy.Fantasy;
 
-public class VariantMetalData extends PersistentState {
+public class VariantGemData extends PersistentState {
 
-    public static final String DATA_TAG = ".metal";
+    public static final String DATA_TAG = ".gem";
     public int color = 0;
 
     @Override
@@ -21,34 +21,34 @@ public class VariantMetalData extends PersistentState {
         return nbt;
     }
 
-    public static VariantMetalData createFromNbt(NbtCompound tag){
-        VariantMetalData metalData = new VariantMetalData();
-        metalData.color = tag.getInt(ModColorProvider.MOD_COLOR_NBT_ID);
-        return metalData;
+    public static VariantGemData createFromNbt(NbtCompound tag){
+        VariantGemData gemData = new VariantGemData();
+        gemData.color = tag.getInt(ModColorProvider.MOD_COLOR_NBT_ID);
+        return gemData;
     }
 
-    public static VariantMetalData getWorldMetalData(ServerWorld world){
+    public static VariantGemData getWorldGemData(ServerWorld world){
         PersistentStateManager persistentStateManager = world.getPersistentStateManager();
 
-        VariantMetalData metalData = persistentStateManager.getOrCreate(
-                VariantMetalData::createFromNbt,
-                VariantMetalData::new,
+        VariantGemData gemData = persistentStateManager.getOrCreate(
+                VariantGemData::createFromNbt,
+                VariantGemData::new,
                 EndGame.MOD_ID + DATA_TAG);
 
-        metalData.markDirty();
+        gemData.markDirty();
 
-        return metalData;
+        return gemData;
     }
 
     public static void createRandomData(ServerWorld world) {
-        EndGame.LOGGER.info("VariantMetalData: Generating material data for id: " + FantasyDimensionHelper.toId(world));
-        VariantMetalData data = getWorldMetalData(world);
+        EndGame.LOGGER.info("VariantGemData: Generating material data for id: " + FantasyDimensionHelper.toId(world));
+        VariantGemData data = getWorldGemData(world);
         data.color = colorRandom(world.getRandom());
     }
 
     private static int colorRandom(Random random) {
         int color = random.nextInt(ModColorProvider.NUM_VARIANT_COLORS);
-        EndGame.LOGGER.info("VariantMetalData: Color: " + color);
+        EndGame.LOGGER.info("VariantGemData: Color: " + color);
         return color;
     }
 }

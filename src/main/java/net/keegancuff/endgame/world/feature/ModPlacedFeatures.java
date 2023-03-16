@@ -17,6 +17,8 @@ public class ModPlacedFeatures {
             new Identifier(EndGame.MOD_ID, "ore_enderium"));
     public static final RegistryKey<PlacedFeature> ORE_VARIANT_METAL_PLACED = RegistryKey.of(RegistryKeys.PLACED_FEATURE,
             new Identifier(EndGame.MOD_ID, "ore_variant_metal"));
+    public static final RegistryKey<PlacedFeature> ORE_VARIANT_GEM_PLACED = RegistryKey.of(RegistryKeys.PLACED_FEATURE,
+            new Identifier(EndGame.MOD_ID, "ore_variant_gem"));
 
     public static void registerPlacedFeatures() {
         EndGame.LOGGER.debug("Registering the ModPlacedFeatures for " + EndGame.MOD_ID);

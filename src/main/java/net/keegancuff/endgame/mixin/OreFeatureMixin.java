@@ -34,42 +34,21 @@ public class OreFeatureMixin {
         StructureWorldAccess world = args.get(0);
         OreFeatureConfig config = args.get(2);
         ServerWorld serverWorld = world instanceof ServerWorld? ((ServerWorld)world) : world.toServerWorld();
-        if (config.targets.get(0).state.isOf(ModBlocks.VARIANT_METAL_ORE)){
-            if (serverWorld.getRegistryKey().getValue().toString().contains("phase_dimension_")){
-                List<OreFeatureConfig.Target> list = new ArrayList<>();
+        if (serverWorld.getRegistryKey().getValue().toString().contains("phase_dimension_")){
+            List<OreFeatureConfig.Target> list;
+            if (config.targets.get(0).state.isOf(ModBlocks.VARIANT_METAL_ORE)){
+                list = new ArrayList<>();
                 for(OreFeatureConfig.Target target : config.targets){
                     list.add(OreFeatureConfig.createTarget(target.target, VariantMaterialHelper.getMetalData(serverWorld, target.state.getBlock())));
                 }
-                args.set(0, world);
-                args.set(1, args.get(1));
                 args.set(2, new OreFeatureConfig(list, config.size, config.discardOnAirChance));
-                args.set(3, args.get(3));
-                args.set(4, args.get(4));
-                args.set(5, args.get(5));
-                args.set(6, args.get(6));
-                args.set(7, args.get(7));
-                args.set(8, args.get(8));
-                args.set(9, args.get(9));
-                args.set(10, args.get(10));
-                args.set(11, args.get(11));
-                args.set(12, args.get(12));
-                args.set(13, args.get(13));
+            } else if (config.targets.get(0).state.isOf(ModBlocks.VARIANT_GEM_ORE)){
+                list = new ArrayList<>();
+                for (OreFeatureConfig.Target target : config.targets){
+                    list.add(OreFeatureConfig.createTarget(target.target, VariantMaterialHelper.getGemData(serverWorld, target.state.getBlock())));
+                }
+                args.set(2, new OreFeatureConfig(list, config.size, config.discardOnAirChance));
             }
-        } else {
-            args.set(0, world);
-            args.set(1, args.get(1));
-            args.set(2, config);
-            args.set(3, args.get(3));
-            args.set(4, args.get(4));
-            args.set(5, args.get(5));
-            args.set(6, args.get(6));
-            args.set(7, args.get(7));
-            args.set(8, args.get(8));
-            args.set(9, args.get(9));
-            args.set(10, args.get(10));
-            args.set(11, args.get(11));
-            args.set(12, args.get(12));
-            args.set(13, args.get(13));
         }
     }
 
