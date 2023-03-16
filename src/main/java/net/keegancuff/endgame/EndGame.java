@@ -6,6 +6,7 @@ import net.keegancuff.endgame.block.entity.ModBlockEntities;
 import net.keegancuff.endgame.item.ModColorProvider;
 import net.keegancuff.endgame.item.ModItemGroup;
 import net.keegancuff.endgame.item.ModItems;
+import net.keegancuff.endgame.networking.ModMessages;
 import net.keegancuff.endgame.screen.ModScreenHandlers;
 import net.keegancuff.endgame.util.ModRegistries;
 import net.keegancuff.endgame.world.dimension.ModDimensions;
@@ -38,5 +39,7 @@ public class EndGame implements ModInitializer {
 		ModDimensions.register();
 
 		ModRegistries.registerModStuffs();
+
+		ModMessages.registerC2SPackets();
 	}
 }

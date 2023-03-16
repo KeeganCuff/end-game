@@ -5,6 +5,7 @@ import net.keegancuff.endgame.screen.VariantGemScreen;
 import net.keegancuff.endgame.screen.VariantMetalScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -44,7 +45,7 @@ public class VariantGemItem extends Item {
     @Override
     public ItemStack getDefaultStack(){
         ItemStack stack = super.getDefaultStack();
-        stack.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, 0);
+        stack.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, ModColorProvider.DEFAULT_GEM_COLOR);
         return stack;
     }
 }

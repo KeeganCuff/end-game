@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "endgame:deepslate_variant_gem_ore",
-    "endgame:variant_gem_ore"
+    "endgame:variant_gem_ore",
+    "endgame:variant_gem_block"
   ]
 }

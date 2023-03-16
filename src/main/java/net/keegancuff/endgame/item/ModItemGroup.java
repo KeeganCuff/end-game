@@ -27,13 +27,15 @@ public class ModItemGroup {
                 entries.add(ModItems.ENDERIUM_CHESTPLATE);
                 entries.add(ModItems.ENDERIUM_LEGGINGS);
                 entries.add(ModItems.ENDERIUM_BOOTS);
-                entries.add(ModBlocks.VARIANT_METAL_ORE);
-                entries.add(ModBlocks.DEEPSLATE_VARIANT_METAL_ORE);
-                entries.add(ModItems.VARIANT_METAL_INGOT);
-                entries.add(ModItems.RAW_VARIANT_METAL);
-                entries.add(ModBlocks.VARIANT_GEM_ORE);
-                entries.add(ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
-                entries.add(ModItems.VARIANT_GEM);
+                entries.add(ModBlocks.VARIANT_METAL_ORE.asItem().getDefaultStack());
+                entries.add(ModBlocks.DEEPSLATE_VARIANT_METAL_ORE.asItem().getDefaultStack());
+                entries.add(ModBlocks.VARIANT_METAL_BLOCK.asItem().getDefaultStack());
+                entries.add(ModItems.VARIANT_METAL_INGOT.getDefaultStack());
+                entries.add(ModItems.RAW_VARIANT_METAL.getDefaultStack());
+                entries.add(ModBlocks.VARIANT_GEM_ORE.asItem().getDefaultStack());
+                entries.add(ModBlocks.DEEPSLATE_VARIANT_GEM_ORE.asItem().getDefaultStack());
+                entries.add(ModBlocks.VARIANT_GEM_BLOCK.asItem().getDefaultStack());
+                entries.add(ModItems.VARIANT_GEM.getDefaultStack());
             })).build();
 
     public static void registerModGroups(){

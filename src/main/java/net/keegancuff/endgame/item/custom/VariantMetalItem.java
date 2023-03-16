@@ -44,7 +44,7 @@ public class VariantMetalItem extends Item {
     @Override
     public ItemStack getDefaultStack(){
         ItemStack stack = super.getDefaultStack();
-        stack.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, 0);
+        stack.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, ModColorProvider.DEFAULT_METAL_COLOR);
         return stack;
     }
 }

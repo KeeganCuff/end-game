@@ -1,6 +1,9 @@
 package net.keegancuff.endgame.screen;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.keegancuff.endgame.item.ModColorProvider;
+import net.keegancuff.endgame.networking.ModMessages;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
@@ -87,5 +90,6 @@ public class VariantMetalScreen extends Screen {
         String text = colorField.getText();
         int colorId = Integer.parseInt(text);
         metal.getOrCreateNbt().putInt(ModColorProvider.MOD_COLOR_NBT_ID, colorId);
+        ClientPlayNetworking.send(ModMessages.MODIFY_VARIANT, PacketByteBufs.create().writeItemStack(metal));
     }
 }

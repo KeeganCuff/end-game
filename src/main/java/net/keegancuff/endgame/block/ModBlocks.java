@@ -34,13 +34,17 @@ public class ModBlocks {
             new VariantMetalBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()));
     public static final Block DEEPSLATE_VARIANT_METAL_ORE = registerBlock("deepslate_variant_metal_ore",
             new VariantMetalBlock(FabricBlockSettings.of(Material.STONE).strength(4f).requiresTool()));
-    public static final Block VARIANT_METAL_BLOCK= registerBlock("variant_metal_block",
+    public static final Block VARIANT_METAL_BLOCK = registerBlock("variant_metal_block",
+            new VariantMetalBlock(FabricBlockSettings.of(Material.METAL).strength(4f).requiresTool()));
+    public static final Block RAW_VARIANT_METAL_BLOCK = registerBlock("raw_variant_metal_block",
             new VariantMetalBlock(FabricBlockSettings.of(Material.METAL).strength(4f).requiresTool()));
 
     public static final Block VARIANT_GEM_ORE = registerBlock("variant_gem_ore",
-            new VariantGemBlock(FabricBlockSettings.of(Material.STONE).strength(6f).requiresTool()));
+            new VariantGemBlock(FabricBlockSettings.of(Material.STONE).strength(6f).requiresTool(), true));
     public static final Block DEEPSLATE_VARIANT_GEM_ORE = registerBlock("deepslate_variant_gem_ore",
-            new VariantGemBlock(FabricBlockSettings.of(Material.STONE).strength(6f).requiresTool()));
+            new VariantGemBlock(FabricBlockSettings.of(Material.STONE).strength(6f).requiresTool(), true));
+    public static final Block VARIANT_GEM_BLOCK = registerBlock("variant_gem_block",
+            new VariantGemBlock(FabricBlockSettings.of(Material.METAL).strength(6f).requiresTool(), false));
 
     public static final Block PHASE_SHIFTER = registerBlock("phase_shifter",
             new PhaseShifterBlock(FabricBlockSettings.of(Material.METAL).strength(8f).requiresTool()));
@@ -55,12 +59,16 @@ public class ModBlocks {
             new VariantMetalBlockItem(VARIANT_METAL_ORE, new FabricItemSettings()));
     public static final Item DEEPSLATE_VARIANT_METAL_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "deepslate_variant_metal_ore"),
             new VariantMetalBlockItem(DEEPSLATE_VARIANT_METAL_ORE, new FabricItemSettings()));
-    public static final Item DEEPSLATE_VARIANT_GEM_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "deepslate_variant_gem_ore"),
-            new VariantMetalBlockItem(DEEPSLATE_VARIANT_GEM_ORE, new FabricItemSettings()));
     public static final Item VARIANT_METAL_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "variant_metal_block"),
             new VariantMetalBlockItem(VARIANT_METAL_BLOCK, new FabricItemSettings()));
+    public static final Item RAW_VARIANT_METAL_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "raw_variant_metal_block"),
+            new VariantMetalBlockItem(RAW_VARIANT_METAL_BLOCK, new FabricItemSettings()));
     public static final Item VARIANT_GEM_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "variant_gem_ore"),
             new VariantGemBlockItem(VARIANT_GEM_ORE, new FabricItemSettings()));
+    public static final Item DEEPSLATE_VARIANT_GEM_ORE_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "deepslate_variant_gem_ore"),
+            new VariantGemBlockItem(DEEPSLATE_VARIANT_GEM_ORE, new FabricItemSettings()));
+    public static final Item VARIANT_GEM_BLOCK_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "variant_gem_block"),
+            new VariantGemBlockItem(VARIANT_GEM_BLOCK, new FabricItemSettings()));
     public static final Item PHASE_SHIFTER_ITEM = Registry.register(Registries.ITEM, new Identifier(EndGame.MOD_ID, "phase_shifter"),
             new PhaseShifterBlockItem(PHASE_SHIFTER, new FabricItemSettings()));
     public static final Item CREATIVE_ARTIFICER_STATION_ITEM = registerBlockItem("creative_artificer_station", CREATIVE_ARTIFICER_STATION);
@@ -79,9 +87,12 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(ENDERIUM_ORE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(VARIANT_METAL_ORE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(DEEPSLATE_VARIANT_METAL_ORE));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(RAW_VARIANT_METAL_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(VARIANT_GEM_ORE));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> entries.add(DEEPSLATE_VARIANT_GEM_ORE));
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(ENDERIUM_BLOCK));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.add(ENDERIUM_BLOCK));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.add(VARIANT_METAL_BLOCK));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> entries.add(VARIANT_GEM_BLOCK));
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.add(PHASE_SHIFTER));
         //ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> entries.add(CREATIVE_ARTIFICER_STATION));
         EndGame.LOGGER.debug("Registering ModBlocks for " + EndGame.MOD_ID);

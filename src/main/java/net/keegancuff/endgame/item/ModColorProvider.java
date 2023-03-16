@@ -13,6 +13,8 @@ public class ModColorProvider {
 
     public static final String MOD_COLOR_NBT_ID = "endgame_color";
     public static final int NUM_VARIANT_COLORS = 32;
+    public static final int DEFAULT_METAL_COLOR = 0;
+    public static final int DEFAULT_GEM_COLOR = 10;
     private static final int[] COLORS = {
             0x4287f5, 0x774ef2, 0xfbadb6, 0x9c90b2, 0xa75a40, 0xb3f7c6, 0xebd52f, 0xd4024e,
             0x39921d, 0xc38d33, 0xd73aa0, 0x665b81, 0x3fc5a8, 0x794747, 0x0e1e31, 0x210228,
@@ -30,13 +32,15 @@ public class ModColorProvider {
                 ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
                 ModBlocks.VARIANT_METAL_BLOCK,
                 ModBlocks.VARIANT_GEM_ORE,
-                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
+                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE,
+                ModBlocks.VARIANT_GEM_BLOCK);
         ColorProviderRegistry.BLOCK.register(ModColorProvider::getVariantBlockColorProvider,
                 ModBlocks.VARIANT_METAL_ORE,
                 ModBlocks.DEEPSLATE_VARIANT_METAL_ORE,
                 ModBlocks.VARIANT_METAL_BLOCK,
                 ModBlocks.VARIANT_GEM_ORE,
-                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE);
+                ModBlocks.DEEPSLATE_VARIANT_GEM_ORE,
+                ModBlocks.VARIANT_GEM_BLOCK);
     }
 
     private static int getVariantBlockColorProvider(BlockState state, BlockRenderView view, BlockPos pos, int tintIndex) {

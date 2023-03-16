@@ -25,7 +25,7 @@ public class VariantMetalBlock extends Block {
 
     public VariantMetalBlock(Settings settings) {
         super(settings);
-        setDefaultState(getDefaultState().with(COLOR, 0));
+        setDefaultState(getDefaultState().with(COLOR, ModColorProvider.DEFAULT_METAL_COLOR));
     }
 
 
